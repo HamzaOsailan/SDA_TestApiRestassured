@@ -52,7 +52,7 @@ public class Homework_08_week8 extends Homework_08_BaseUrl {
 
         //4.Do Assertion
         response.then()
-                .statusCode(201) // Asserting that the status code is 201 (Created)
+                .statusCode(201)
                 .body("name", equalTo(expectedData.get("name")),
                         "job", equalTo(expectedData.get("job")),
                         "id", equalTo(expectedData.get("id")),
