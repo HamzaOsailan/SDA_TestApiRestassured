@@ -8,7 +8,7 @@ public class Homework_04_BaseUrl {
     protected RequestSpecification spec;
 
     @BeforeMethod
-    void setUp(){
+     public void setUp(){
         spec= new RequestSpecBuilder()
                 .setBaseUri("https://reqres.in/api/users/2")
                 .build();
