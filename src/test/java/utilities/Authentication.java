@@ -2,6 +2,7 @@ package utilities;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.checkerframework.checker.units.qual.C;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,10 +16,10 @@ public class Authentication {
 
         Map<String, String> bodyMap = new HashMap<>();
 
-        if (email == null) {
-            bodyMap.put("email", "jasonsteel@gmail.com");//If the email is null we will assign our email and password.
+        if (email==null){
+            bodyMap.put("email", "jdoe@fake.com");//If the email is null we will assign our email and password.
             bodyMap.put("password", "Jason.123");
-        } else {
+        }else {
             bodyMap.put("email", email);//This email will be assigned by selenium run. If selenium does not work, this will be null.
             bodyMap.put("password", "Password.123");
         }
@@ -28,11 +29,10 @@ public class Authentication {
                 .body(bodyMap)
                 .contentType(ContentType.JSON)
                 .post("https://thinking-tester-contact-list.herokuapp.com/users/login");
-        response.prettyPrint();
+//        response.prettyPrint();
 
-        String token = response.jsonPath().getString("token");
-        System.out.println("Generated Token: " + token);
-        return token;
+        return response.jsonPath().getString("token");
     }
-}
 
+
+}

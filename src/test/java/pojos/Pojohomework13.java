@@ -1,5 +1,8 @@
 package pojos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Pojohomework13{
 	private String firstName;
 	private String lastName;
@@ -9,6 +12,21 @@ public class Pojohomework13{
 	private Integer id;
 	private String email;
 	private String username;
+
+
+	public Pojohomework13() {
+	}
+
+	public Pojohomework13(String firstName, String lastName, String password, Integer userStatus, String phone, Integer id, String email, String username) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.userStatus = userStatus;
+		this.phone = phone;
+		this.id = id;
+		this.email = email;
+		this.username = username;
+	}
 
 	public void setFirstName(String firstName){
 		this.firstName = firstName;

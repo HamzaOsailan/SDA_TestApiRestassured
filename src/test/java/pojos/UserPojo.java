@@ -1,6 +1,6 @@
 package pojos;
 
-public class UserPojo {
+public class UserPojo{
 	private String firstName;
 	private String lastName;
 	private String password;
@@ -49,13 +49,13 @@ public class UserPojo {
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"UserPojo{" + 
-			"firstName = '" + firstName + '\'' + 
-			",lastName = '" + lastName + '\'' + 
-			",password = '" + password + '\'' + 
-			",email = '" + email + '\'' + 
-			"}";
-		}
+	public String toString(){
+		return
+				"UserPojo{" +
+						"firstName = '" + firstName + '\'' +
+						",lastName = '" + lastName + '\'' +
+						",password = '" + password + '\'' +
+						",email = '" + email + '\'' +
+						"}";
+	}
 }
