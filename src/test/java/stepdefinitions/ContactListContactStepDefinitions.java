@@ -10,6 +10,7 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import pojos.ContactPojo;
+import utilities.Authentication;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
@@ -18,7 +19,7 @@ import static utilities.Authentication.generateToken;
 public class ContactListContactStepDefinitions {
      Response response;
      RequestSpecification spec;
-     String token;
+     String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjFjYzk1YWMzZDcxMzAwMTM0ZjkxNTEiLCJpYXQiOjE3MTQ4NTI2Mzh9.AWeTumumo0F9s6ZENzziJd1wjaZfCbkCjYWS3OJmY9c";
      public ContactPojo expectedData;
 
 
@@ -42,25 +43,23 @@ public class ContactListContactStepDefinitions {
     @Given("set the expected data for adding contact")
     public void set_the_expected_data_for_adding_contact() throws JsonProcessingException {
         String strJson = """
-                {
-                    "firstName": "John",
-                    "lastName": "Doe",
-                    "birthdate": "1970-01-01",
-                    "email": "jdoe@fake.com",
-                    "phone": "8005555555",
-                    "street1": "1 Main St.",
-                    "street2": "Apartment A",
-                    "city": "Anytown",
-                    "stateProvince": "KS",
-                    "postalCode": "12345",
-                    "country": "USA"
-                }""";
+            {
+                "firstName": "John",
+                "lastName": "Doe",
+                "birthdate": "1970-01-01",
+                "email": "jdoe@fake.com",
+                "phone": "8005555555",
+                "street1": "1 Main St.",
+                "street2": "Apartment A",
+                "city": "Anytown",
+                "stateProvince": "KS",
+                "postalCode": "12345",
+                "country": "USA"
+            }""";
 
 
         expectedData = new ObjectMapper().readValue(strJson, ContactPojo.class);
         System.out.println("expectedData = " + expectedData);
-
-
     }
 
     @When("send the post request for adding contact")
@@ -186,7 +185,6 @@ public class ContactListContactStepDefinitions {
 
     @When("send the delete request for delete contact")
     public void sendTheDeleteRequestForDeleteContact() {
-        String token = "{{token}}";
         response = given(spec)
                 .header("Authorization", "Bearer " + token)
                 .delete("{first}");
